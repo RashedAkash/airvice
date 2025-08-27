@@ -110,10 +110,69 @@ new \Kirki\Field\Text(
 		'priority' => 10,
 	]
 );
-
-
-
-
-
 }
 airvice_topbar();
+
+
+function airvice_header(){
+  new \Kirki\Section(
+	'airvice_header',
+	[
+		'title'       => esc_html__( 'My Header Section', 'kirki' ),
+		'description' => esc_html__( 'My Header Section Description.', 'kirki' ),
+		'panel'       => 'airvice_panel',
+		'priority'    => 160,
+	]
+);
+
+new \Kirki\Field\Image(
+	[
+		'settings'    => 'logo_image_setting_url',
+		'label'       => esc_html__( 'Image Control (URL)', 'kirki' ),
+		'description' => esc_html__( 'The saved value will be the URL.', 'kirki' ),
+		'section'     => 'airvice_header',
+		'default'     => get_template_directory_uri().'/assets/img/logo/logo.png',
+	]
+);
+
+new \Kirki\Field\Repeater( [
+    'settings'     => 'header_languages',
+    'label'        => esc_html__( 'Header Languages', 'textdomain' ),
+    'section'      => 'airvice_header',
+    'priority'     => 10,
+    'row_label'    => [
+        'type'  => 'field',
+        'value' => esc_html__( 'Language', 'textdomain' ),
+        'field' => 'lang_name',
+    ],
+    'button_label' => esc_html__( 'Add New Language', 'textdomain' ),
+    'fields'       => [
+        'lang_name' => [
+            'type'        => 'text',
+            'label'       => esc_html__( 'Language Name', 'textdomain' ),
+            'default'     => 'Eng',
+        ],
+        'lang_url' => [
+            'type'        => 'link',
+            'label'       => esc_html__( 'Language URL', 'textdomain' ),
+            'default'     => '#',
+        ],
+    ],
+    'default'      => [
+        [
+            'lang_name' => 'Fre',
+            'lang_url'  => '#',
+        ],
+        [
+            'lang_name' => 'Chi',
+            'lang_url'  => '#',
+        ],
+        [
+            'lang_name' => 'Jap',
+            'lang_url'  => '#',
+        ],
+    ],
+] );
+
+}
+airvice_header();

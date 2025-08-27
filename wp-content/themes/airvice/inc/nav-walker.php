@@ -1,7 +1,7 @@
 <?php
 
 
-class Solub_Walker_Nav_Menu extends Walker {
+class airvice_Walker_Nav_Menu extends Walker {
 	/**
 	 * What the class handles.
 	 *

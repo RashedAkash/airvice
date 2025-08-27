@@ -1,64 +1,41 @@
-<div class="header-menu header-sticky">
+<?php 
+$header_logo= get_theme_mod('logo_image_setting_url',get_template_directory_uri().'/assets/img/logo/logo.png');
+$header_lang= get_theme_mod('header_languages',[])
+?>
+
+<div class="header-menu header-sticky header-menu-2">
             <div class="custom-container">
                 <div class="row align-items-center">
-                    <div class="col-xxl-2 col-xl-2 col-lg-3 col-8">
+                    <div class="col-xl-2 col-lg-3 col-8">
                         <div class="header-logo pt-15 pb-15">
-                            <a href="index.html"><img src="assets/img/logo/logo.png" class="img-fluid" alt="img"></a>
+                            <?php if(!empty($header_logo)): ?>
+                            <a href="index.html"><img src="<?php echo esc_url($header_logo);?>" class="img-fluid" alt="img"></a>
+                            <?php endif; ?>
                         </div>
                     </div>
-                    <div class="col-xxl-6 col-xl-8 col-lg-6 col-4">
+                    <div class="col-xl-7 col-lg-6 col-4">
                         <div class="main-menu d-none d-lg-block">
                             <nav id="mobile-menu">
-                                <ul>
-                                    <li class="menu-item-has-children"><a href="index.html">HOME</a>
-                                        <ul class="sub-menu">
-                                            <li><a href="index.html">Home Style 1</a></li>
-                                            <li><a href="index-2.html">Home Style 2</a></li>
-                                            <li><a href="index-3.html">Home Style 3</a></li>
-                                        </ul>
-                                    </li>
-                                    <li class="menu-item-has-children"><a href="service.html">SERVICES</a>
-                                        <ul class="sub-menu">
-                                            <li><a href="service.html">Services</a></li>
-                                            <li><a href="service-details.html">Services Details</a></li>
-                                        </ul>
-                                    </li>
-                                    <li class="menu-item-has-children"><a href="project.html">PROJECT</a>
-                                        <ul class="sub-menu">
-                                            <li><a href="project.html">Project</a></li>
-                                            <li><a href="project-details.html">Project Details</a></li>
-                                        </ul>
-                                    </li>
-                                    <li class="menu-item-has-children"><a href="#">PAGES</a>
-                                        <ul class="sub-menu">
-                                            <li><a href="about.html">About</a></li>
-                                            <li><a href="choose.html">Why Choose</a></li>
-                                            <li><a href="team.html">Team</a></li>
-                                            <li><a href="team-details.html">Team Details</a></li>
-                                            <li><a href="price.html">Price</a></li>
-                                            <li><a href="faq.html">Faq</a></li>
-                                        </ul>
-                                    </li>
-                                    <li class="menu-item-has-children"><a href="blog.html">Blog</a>
-                                        <ul class="sub-menu">
-                                            <li><a href="blog.html">Blog Grid</a></li>
-                                            <li><a href="blog-sidebar.html">Blog Sidebar</a></li>
-                                            <li><a href="blog-details.html">Blog Details</a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="contact.html">CONTACT</a></li>
-                                </ul>
+                                <?php airvice_header_menu(); ?>
                             </nav>
                         </div>
                         <div class="side-menu-icon d-lg-none text-end">
                             <button class="side-toggle"><i class="far fa-bars"></i></button>
                         </div>
                     </div>
-                    <div class="col-xxl-4 col-xl-2 col-lg-3 d-none d-lg-block">
-                        <div class="header-right text-end">
+                    <div class="col-xl-3 col-lg-3 d-none d-lg-block">
+                        <div class="header-right header-right-2 text-end">
                             <ul class="z-index">
-                                <li class="user__text"><span><i><img src="assets/img/icon/icon-man.png" class="img-fluid" alt="img"></i><a href="tel:029575824">02 (555) 520 890</a> </span></li>
-                                <li><a href="contact.html" class="theme-btn theme-btn-white w-btn">Get Quote</a></li>
+                                <li class="language"> Eng
+                                    <div class="language-dropdown">
+                                        <?php if(!empty($header_lang)): ?>
+                                        <?php foreach($header_lang as $language): ?>
+                                        <a href="<?php echo esc_html($language['lang_url']); ?>"><?php echo esc_html($language['lang_name']); ?></a>
+                                      <?php endforeach;  ?>
+                                      <?php endif;  ?>
+                                    </div>
+                                </li>
+                                <li><a href="contact.html" class="theme-btn">Get Quote</a></li>
                             </ul>
                         </div>
                     </div>
