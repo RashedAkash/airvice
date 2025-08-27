@@ -64,3 +64,110 @@ function airvice_setup() {
 }
 endif; // airvice_setup
 add_action( 'after_setup_theme', 'airvice_setup' );
+
+
+
+
+/**
+ * Add a sidebar.
+ */
+function airvice_widget_init() {
+
+	register_sidebar( array(
+		'name'          => __( 'Blog Sidebar', 'airvice' ),
+		'id'            => 'blog-sidebar',
+		'description'   => __( 'Widgets in this area will be shown blog sidebar', 'airvice' ),
+		'before_widget' => '<div id="%1$s" class="tp-sidebar-widget mb-45 %2$s">',
+		'after_widget'  => '</div>',
+		'before_title'  => '<h3 class="tp-sidebar-widget-title">',
+		'after_title'   => '</h3>',
+	) );
+
+	register_sidebar( array(
+		'name'          => __( 'Fiiter Widget 01', 'airvice' ),
+		'id'            => 'footer-widget-1',
+		'description'   => __( 'Widgets in this area will be shown footer', 'airvice' ),
+		'before_widget' => '<div id="%1$s" class="footer__widget mb-30 wow fadeInUp %2$s">',
+		'after_widget'  => '</div>',
+		'before_title'  => '<h4 class="footer__widget--title">',
+		'after_title'   => '</h4>',
+	) );
+	register_sidebar( array(
+		'name'          => __( 'Fiiter Widget 02', 'airvice' ),
+		'id'            => 'footer-widget-2',
+		'description'   => __( 'Widgets in this area will be shown footer', 'airvice' ),
+		'before_widget' => '<div id="%1$s" class="footer__widget mb-30 pl-80 wow fadeInUp %2$s">',
+		'after_widget'  => '</div>',
+		'before_title'  => '<h4 class="footer__widget--title">',
+		'after_title'   => '</h4>',
+	) );
+	register_sidebar( array(
+		'name'          => __( 'Fiiter Widget 03', 'airvice' ),
+		'id'            => 'footer-widget-3',
+		'description'   => __( 'Widgets in this area will be shown footer', 'airvice' ),
+		'before_widget' => '<div id="%1$s" class="footer__widget mb-30 pl-30 wow fadeInUp %2$s">',
+		'after_widget'  => '</div>',
+		'before_title'  => '<h4 class="footer__widget--title">',
+		'after_title'   => '</h4>',
+	) );
+	register_sidebar( array(
+		'name'          => __( 'Fiiter Widget 04', 'airvice' ),
+		'id'            => 'footer-widget-4',
+		'description'   => __( 'Widgets in this area will be shown footer', 'airvice' ),
+		'before_widget' => '<div id="%1$s" class="footer__widget mb-30 wow fadeInUp %2$s">',
+		'after_widget'  => '</div>',
+		'before_title'  => '<h4 class="footer__widget--title">',
+		'after_title'   => '</h4>',
+	) );
+}
+add_action( 'widgets_init', 'airvice_widget_init' );
+
+
+
+
+function airvice_theme_scripts() {
+	
+	// CSS
+	wp_enqueue_style( 'bootstrap', get_template_directory_uri() . '/assets/css/bootstrap.min.css', array(), '5.2.3', 'all' );
+	wp_enqueue_style( 'swiper-bundle', get_template_directory_uri() . '/assets/css/swiper-bundle.css', array(), '8.2.2', 'all' );
+	wp_enqueue_style( 'slick', get_template_directory_uri() . '/assets/css/slick.css', array(), '8.2.2', 'all' );
+	wp_enqueue_style( 'venobox', get_template_directory_uri() . '/assets/css/venobox.min.css', array(), '8.2.2', 'all' );
+	wp_enqueue_style( 'responsive', get_template_directory_uri() . '/assets/css/responsive.css', array(), '8.2.2', 'all' );
+	wp_enqueue_style( 'fontawesome', get_template_directory_uri() . '/assets/css/fontawesome.min.css', array(), '8.2.2', 'all' ); // fixed
+	wp_enqueue_style( 'meanmenu', get_template_directory_uri() . '/assets/css/meanmenu.css', array(), '8.2.2', 'all' );
+	wp_enqueue_style( 'icon', get_template_directory_uri() . '/assets/css/flaticon.css', array(), '8.2.2', 'all' );	
+	wp_enqueue_style( 'animate', get_template_directory_uri() . '/assets/css/animate.min.css', array(), '8.2.2', 'all' );
+	wp_enqueue_style( 'custom-animate', get_template_directory_uri() . '/assets/css/custom-animation.css', array(), '8.2.2', 'all' );
+	wp_enqueue_style( 'default', get_template_directory_uri() . '/assets/css/default.css', array(), '8.2.2', 'all' );
+	wp_enqueue_style( 'airvice-main', get_template_directory_uri() . '/assets/css/main.css', array(), '8.2.2', 'all' );
+	wp_enqueue_style( 'style', get_stylesheet_uri() );
+
+
+
+	// JS
+	wp_enqueue_script( 'bootstrap', get_template_directory_uri() . '/assets/js/bootstrap.bundle.min.js', array( 'jquery' ), '5.1.3', true );
+	wp_enqueue_script( 'wow', get_template_directory_uri() . '/assets/js/wow.min.js', array('jquery'), '5.1.3', true );
+	wp_enqueue_script( 'swiper-bundle', get_template_directory_uri() . '/assets/js/swiper-bundle.js', array('jquery'), '5.1.3', true );
+	wp_enqueue_script( 'venobox', get_template_directory_uri() . '/assets/js/venobox.min.js', array('jquery'), '5.1.3', true );
+	wp_enqueue_script( 'slick', get_template_directory_uri() . '/assets/js/slick.min.js', array('jquery'), '5.1.3', true );
+	wp_enqueue_script( 'popper', get_template_directory_uri() . '/assets/js/popper.min.js', array('jquery'), '5.1.3', true );	
+	wp_enqueue_script( 'meanmenu', get_template_directory_uri() . '/assets/js/jquery.meanmenu.min.js', array('jquery'), '5.1.3', true );
+	wp_enqueue_script( 'isotope', get_template_directory_uri() . '/assets/js/isotope.pkgd.min.js', array('jquery','imagesloaded'), '3.0.6', true );
+	wp_enqueue_script( 'airvice-main', get_template_directory_uri() . '/assets/js/main.js', array('jquery','isotope'), '1.0.0', true );
+
+	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
+		wp_enqueue_script( 'comment-reply' );
+	}
+}
+add_action( 'wp_enqueue_scripts', 'airvice_theme_scripts' );
+
+
+include_once('inc/template-function.php');
+
+
+if ( class_exists( 'Kirki' ) ) {
+	function airvice_kirki() {
+		include_once('inc/airvice-kirki.php');
+	}
+	add_action( 'after_setup_theme', 'airvice_kirki' );
+}
