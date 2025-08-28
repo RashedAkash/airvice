@@ -11,6 +11,61 @@ function airvice_header_menu(){
 }
 
 
+//pagination
+function airvice_pagination(){
+    $pages = paginate_links( array( 
+        'type' => 'array',
+        'prev_text'    => __('<i class="fal fa-long-arrow-left"></i>','harry'),
+        'next_text'    => __('<i class="fal fa-long-arrow-right"></i>','harry'),
+    ) );
+        if( $pages ) {
+        echo '<nav><ul>';
+        foreach ( $pages as $page ) {
+            echo "<li>$page</li>";
+        }
+        echo '</ul><nav>';
+    }
+}
+
+// exdos_tags
+function solub_tags(){
+	$post_tags = get_the_tags();
+    if ($post_tags) {
+        foreach ($post_tags as $tag) {
+            ?>
+            <a href="<?php echo get_tag_link($tag); ?>"><?php echo esc_html( $tag->name); ?></a>
+            <?php
+        }
+    } else {
+        ?>
+        <i><?php echo esc_html__('No tags found','exdos'); ?></i>
+        <?php
+    }
+}
+
+/**
+ * Generate custom search form
+ *
+ * @param string $form Form HTML.
+ * @return string Modified form HTML.
+ */
+
+function airvice_blog_search_form( $form ) {
+	$form = '
+   <div class="widget wow fadeInUp"  data-wow-delay=".3s">
+   <div class="sidebar--widget__search mb-45">
+      <form action="' . home_url( '/' ) . '" method="get">
+            <input type="text" name="s" value="' . get_search_query() . '" placeholder="' . esc_attr__( 'Enter your keywords...' ) . '">
+            <button type="submit"><i class="far fa-search"></i></button>
+      </form>
+   </div>
+</div>   
+   ';
+
+	return $form;
+}
+add_filter( 'get_search_form', 'airvice_blog_search_form' );
+
 /**
 * Sanitize SVG markup for front-end display.
 *

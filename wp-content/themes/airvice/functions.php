@@ -77,9 +77,9 @@ function airvice_widget_init() {
 		'name'          => __( 'Blog Sidebar', 'airvice' ),
 		'id'            => 'blog-sidebar',
 		'description'   => __( 'Widgets in this area will be shown blog sidebar', 'airvice' ),
-		'before_widget' => '<div id="%1$s" class="tp-sidebar-widget mb-45 %2$s">',
+		'before_widget' => '<div id="%1$s" class="ablog__sidebar %2$s">',
 		'after_widget'  => '</div>',
-		'before_title'  => '<h3 class="tp-sidebar-widget-title">',
+		'before_title'  => '<h3 class="sidebar__widget--title mb-30">',
 		'after_title'   => '</h3>',
 	) );
 
@@ -163,6 +163,7 @@ add_action( 'wp_enqueue_scripts', 'airvice_theme_scripts' );
 
 
 include_once('inc/template-function.php');
+include_once('inc/nav-walker.php');
 include_once('inc/nav-walker.php');
 
 
