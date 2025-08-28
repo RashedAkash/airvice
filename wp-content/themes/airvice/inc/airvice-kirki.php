@@ -135,6 +135,16 @@ new \Kirki\Field\Image(
 	]
 );
 
+new \Kirki\Field\Text(
+	[
+		'settings' => 'header_lang_text',
+		'label'    => esc_html__( 'Language', 'kirki' ),
+		'section'  => 'airvice_header',
+		'default'  => esc_html__( 'ENG', 'kirki' ),
+		'priority' => 10,
+	]
+);
+
 new \Kirki\Field\Repeater( [
     'settings'     => 'header_languages',
     'label'        => esc_html__( 'Header Languages', 'textdomain' ),
@@ -174,5 +184,89 @@ new \Kirki\Field\Repeater( [
     ],
 ] );
 
+
+new \Kirki\Field\URL(
+	[
+		'settings' => 'header_btn_url',
+		'label'    => esc_html__( 'URL Control', 'kirki' ),
+		'section'  => 'airvice_header',
+		'default'  => '#',
+		'priority' => 10,
+	]
+);
+
+new \Kirki\Field\Text(
+	[
+		'settings' => 'header_btn_text',
+		'label'    => esc_html__( 'Button Text', 'kirki' ),
+		'section'  => 'airvice_header',
+		'default'  => esc_html__( 'Get Quote', 'kirki' ),
+		'priority' => 10,
+	]
+);
+
 }
 airvice_header();
+
+function header_rightbar(){
+
+	  new \Kirki\Section(
+	'header_rightbar',
+	[
+		'title'       => esc_html__( 'My Header rightbar Section', 'kirki' ),
+		'description' => esc_html__( 'My Header Section Description.', 'kirki' ),
+		'panel'       => 'airvice_panel',
+		'priority'    => 160,
+	]
+);
+
+	new \Kirki\Field\Checkbox_Switch(
+	[
+		'settings'    => 'header_rightbar_switch',
+		'label'       => esc_html__( 'Switch Field', 'kirki' ),
+		'description' => esc_html__( 'Simple switch control', 'kirki' ),
+		'section'     => 'header_rightbar',
+		'default'     => 'off',
+		'choices'     => [
+			'on'  => esc_html__( 'Enable', 'kirki' ),
+			'off' => esc_html__( 'Disable', 'kirki' ),
+		],
+	]
+);
+}
+
+header_rightbar();
+
+function footer_bg(){
+	  new \Kirki\Section(
+	'footer',
+	[
+		'title'       => esc_html__( 'My footer Section', 'kirki' ),
+		'description' => esc_html__( 'My footer Section Description.', 'kirki' ),
+		'panel'       => 'airvice_panel',
+		'priority'    => 160,
+	]
+);
+
+new \Kirki\Field\Image(
+	[
+		'settings'    => 'footer_bg_image_setting',
+		'label'       => esc_html__( 'Image Control (URL)', 'kirki' ),
+		'description' => esc_html__( 'The saved value will be the URL.', 'kirki' ),
+		'section'     => 'footer',
+		'default'     => get_template_directory_uri().'/assets/img/footer/footer-bg.jpg',
+	]
+);
+
+new \Kirki\Field\Text(
+	[
+		'settings' => 'footer_copyright_text',
+		'label'    => esc_html__( 'Footer Copyright Text', 'kirki' ),
+		'section'  => 'footer',
+		'default'  => esc_html__( 'Copyright © 2021 <a href="#">Theme_pure</a>. All Rights Reserved.', 'kirki' ),
+		'priority' => 10,
+	]
+);
+}
+
+footer_bg();

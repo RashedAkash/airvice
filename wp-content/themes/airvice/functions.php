@@ -96,7 +96,7 @@ function airvice_widget_init() {
 		'name'          => __( 'Fiiter Widget 02', 'airvice' ),
 		'id'            => 'footer-widget-2',
 		'description'   => __( 'Widgets in this area will be shown footer', 'airvice' ),
-		'before_widget' => '<div id="%1$s" class="footer__widget mb-30 pl-80 wow fadeInUp %2$s">',
+		'before_widget' => '<div id="%1$s" class="footer__widget mb-30  wow fadeInUp %2$s">',
 		'after_widget'  => '</div>',
 		'before_title'  => '<h4 class="footer__widget--title">',
 		'after_title'   => '</h4>',
