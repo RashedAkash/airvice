@@ -1,11 +1,11 @@
 <?php
-class Solub_Recent_Post_Widget extends WP_Widget {
+class airvice_Recent_Post_Widget extends WP_Widget {
 
     public function __construct() {
         parent::__construct(
-            'solub_recent_post_widget',
-            __('Solub Recent Post', 'solub'),
-            array('description' => __('Display recent blog posts with thumbnail and date.', 'solub'))
+            'airvice_recent_post_widget',
+            __('airvice Recent Post', 'airvice'),
+            array('description' => __('Display recent blog posts with thumbnail and date.', 'airvice'))
         );
     }
 
@@ -31,21 +31,22 @@ class Solub_Recent_Post_Widget extends WP_Widget {
         if ($recent_posts->have_posts()) :
             while ($recent_posts->have_posts()) : $recent_posts->the_post();
                 ?>
-                <div class="tp-recent-post-item d-flex align-items-center">
-                    <div class="tp-recent-post-thumb mr-20">
-                        <a href="<?php the_permalink(); ?>">
-                            <?php the_post_thumbnail('thumbnail'); ?>
-                        </a>
-                    </div>
-                    <div class="tp-recent-post-content">
-                        <h3 class="tp-recent-post-title">
-                            <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
-                        </h3>
-                        <div class="tp-recent-post-meta">
-                            <span><i class="fa-regular fa-clock"></i> <?php echo get_the_date(); ?></span>
-                        </div>
-                    </div>
-                </div>
+                 <div class="widget mb-45 wow fadeInUp"  data-wow-delay=".5s">
+                               
+                                <div class="sidebar--widget__post mb-20">
+                                    <div class="sidebar__post--thumb">
+                                        <a href="<?php the_permalink(); ?>">
+                                            <div class="post__img" ><?php the_post_thumbnail('thumbnail'); ?></div>
+                                        </a>
+                                    </div>
+                                    <div class="sidebar__post--text">
+                                        <h4 class="sidebar__post--title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?>.</a></h4>
+                                        <span><?php echo get_the_date(); ?></span>
+                                    </div>
+                                </div>
+                              
+                            </div>
+                
                 <?php
             endwhile;
             wp_reset_postdata();
@@ -55,26 +56,26 @@ class Solub_Recent_Post_Widget extends WP_Widget {
     }
 
     public function form($instance) {
-        $title = $instance['title'] ?? __('Recent Posts', 'solub');
+        $title = $instance['title'] ?? __('Recent Posts', 'airvice');
         $order = $instance['order'] ?? 'DESC';
         $number = $instance['number'] ?? 3;
         ?>
         <p>
-            <label for="<?php echo esc_attr($this->get_field_id('title')); ?>"><?php _e('Title:', 'solub'); ?></label>
+            <label for="<?php echo esc_attr($this->get_field_id('title')); ?>"><?php _e('Title:', 'airvice'); ?></label>
             <input class="widefat" id="<?php echo esc_attr($this->get_field_id('title')); ?>"
                    name="<?php echo esc_attr($this->get_field_name('title')); ?>" type="text"
                    value="<?php echo esc_attr($title); ?>"/>
         </p>
         <p>
-            <label for="<?php echo esc_attr($this->get_field_id('order')); ?>"><?php _e('Order:', 'solub'); ?></label>
+            <label for="<?php echo esc_attr($this->get_field_id('order')); ?>"><?php _e('Order:', 'airvice'); ?></label>
             <select id="<?php echo esc_attr($this->get_field_id('order')); ?>"
                     name="<?php echo esc_attr($this->get_field_name('order')); ?>" class="widefat">
-                <option value="DESC" <?php selected($order, 'DESC'); ?>><?php _e('Descending', 'solub'); ?></option>
-                <option value="ASC" <?php selected($order, 'ASC'); ?>><?php _e('Ascending', 'solub'); ?></option>
+                <option value="DESC" <?php selected($order, 'DESC'); ?>><?php _e('Descending', 'airvice'); ?></option>
+                <option value="ASC" <?php selected($order, 'ASC'); ?>><?php _e('Ascending', 'airvice'); ?></option>
             </select>
         </p>
         <p>
-            <label for="<?php echo esc_attr($this->get_field_id('number')); ?>"><?php _e('Number of posts:', 'solub'); ?></label>
+            <label for="<?php echo esc_attr($this->get_field_id('number')); ?>"><?php _e('Number of posts:', 'airvice'); ?></label>
             <input class="tiny-text" id="<?php echo esc_attr($this->get_field_id('number')); ?>"
                    name="<?php echo esc_attr($this->get_field_name('number')); ?>" type="number" step="1" min="1"
                    value="<?php echo esc_attr($number); ?>" size="3"/>
@@ -92,7 +93,7 @@ class Solub_Recent_Post_Widget extends WP_Widget {
 }
 
 // Register widget
-function solub_register_recent_post_widget() {
-    register_widget('Solub_Recent_Post_Widget');
+function airvice_register_recent_post_widget() {
+    register_widget('airvice_Recent_Post_Widget');
 }
-add_action('widgets_init', 'solub_register_recent_post_widget');
+add_action('widgets_init', 'airvice_register_recent_post_widget');

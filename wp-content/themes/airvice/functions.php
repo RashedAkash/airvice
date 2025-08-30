@@ -164,7 +164,7 @@ add_action( 'wp_enqueue_scripts', 'airvice_theme_scripts' );
 
 include_once('inc/template-function.php');
 include_once('inc/nav-walker.php');
-include_once('inc/nav-walker.php');
+include_once('inc/airvice-recent-post.php');
 
 
 if ( class_exists( 'Kirki' ) ) {
