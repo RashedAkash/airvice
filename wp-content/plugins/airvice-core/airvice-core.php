@@ -1,20 +1,22 @@
 <?php
 /**
- * Plugin Name: Elementor Hello World
+ * Plugin Name: Airvice Core
  * Description: Elementor sample plugin.
  * Plugin URI:  https://elementor.com/
- * Version:     1.2.1
- * Author:      Author Name
+ * Version:     1.0.0
+ * Author:      Akash
  * Author URI:  https://elementor.com/
- * Text Domain: elementor-hello-world
+ * Text Domain: airvice-core
  * Elementor tested up to: 3.5.0
  * Elementor Pro tested up to: 3.5.0
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
+require_once('include/airvice-kses-func.php');
+
 /**
- * Main Elementor Hello World Class
+ * Main Airvice Core Class
  *
  * The init class that runs the Hello World plugin.
  * Intended To make sure that the plugin's minimum requirements are met.
@@ -48,7 +50,7 @@ final class Elementor_Hello_World {
 	 * @since 1.2.0
 	 * @var string Minimum PHP version required to run the plugin.
 	 */
-	const MINIMUM_PHP_VERSION = '7.0';
+	const MINIMUM_PHP_VERSION = '8.0';
 
 	/**
 	 * Constructor
@@ -113,9 +115,9 @@ final class Elementor_Hello_World {
 
 		$message = sprintf(
 			/* translators: 1: Plugin name 2: Elementor */
-			esc_html__( '"%1$s" requires "%2$s" to be installed and activated.', 'elementor-hello-world' ),
-			'<strong>' . esc_html__( 'Elementor Hello World', 'elementor-hello-world' ) . '</strong>',
-			'<strong>' . esc_html__( 'Elementor', 'elementor-hello-world' ) . '</strong>'
+			esc_html__( '"%1$s" requires "%2$s" to be installed and activated.', 'airvice-core' ),
+			'<strong>' . esc_html__( 'Airvice Core', 'airvice-core' ) . '</strong>',
+			'<strong>' . esc_html__( 'Elementor', 'airvice-core' ) . '</strong>'
 		);
 
 		printf( '<div class="notice notice-warning is-dismissible"><p>%1$s</p></div>', $message );
@@ -136,9 +138,9 @@ final class Elementor_Hello_World {
 
 		$message = sprintf(
 			/* translators: 1: Plugin name 2: Elementor 3: Required Elementor version */
-			esc_html__( '"%1$s" requires "%2$s" version %3$s or greater.', 'elementor-hello-world' ),
-			'<strong>' . esc_html__( 'Elementor Hello World', 'elementor-hello-world' ) . '</strong>',
-			'<strong>' . esc_html__( 'Elementor', 'elementor-hello-world' ) . '</strong>',
+			esc_html__( '"%1$s" requires "%2$s" version %3$s or greater.', 'airvice-core' ),
+			'<strong>' . esc_html__( 'Airvice Core', 'airvice-core' ) . '</strong>',
+			'<strong>' . esc_html__( 'Elementor', 'airvice-core' ) . '</strong>',
 			self::MINIMUM_ELEMENTOR_VERSION
 		);
 
@@ -160,9 +162,9 @@ final class Elementor_Hello_World {
 
 		$message = sprintf(
 			/* translators: 1: Plugin name 2: PHP 3: Required PHP version */
-			esc_html__( '"%1$s" requires "%2$s" version %3$s or greater.', 'elementor-hello-world' ),
-			'<strong>' . esc_html__( 'Elementor Hello World', 'elementor-hello-world' ) . '</strong>',
-			'<strong>' . esc_html__( 'PHP', 'elementor-hello-world' ) . '</strong>',
+			esc_html__( '"%1$s" requires "%2$s" version %3$s or greater.', 'airvice-core' ),
+			'<strong>' . esc_html__( 'Airvice Core', 'airvice-core' ) . '</strong>',
+			'<strong>' . esc_html__( 'PHP', 'airvice-core' ) . '</strong>',
 			self::MINIMUM_PHP_VERSION
 		);
 

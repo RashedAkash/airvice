@@ -1,5 +1,5 @@
 <?php
-namespace ElementorHelloWorld\Widgets;
+namespace AirviceCore\Widgets;
 
 use Elementor\Widget_Base;
 use Elementor\Controls_Manager;
@@ -7,13 +7,13 @@ use Elementor\Controls_Manager;
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 /**
- * Elementor Hello World
+ * Airvice Core
  *
  * Elementor widget for hello world.
  *
  * @since 1.0.0
  */
-class Hello_World extends Widget_Base {
+class Airvice_Brand extends Widget_Base {
 
 	/**
 	 * Retrieve the widget name.
@@ -25,7 +25,7 @@ class Hello_World extends Widget_Base {
 	 * @return string Widget name.
 	 */
 	public function get_name() {
-		return 'hello-world';
+		return 'airvice-brand';
 	}
 
 	/**
@@ -38,7 +38,7 @@ class Hello_World extends Widget_Base {
 	 * @return string Widget title.
 	 */
 	public function get_title() {
-		return __( 'Hello World', 'elementor-hello-world' );
+		return __( 'Airvice Brand', 'airvice-core' );
 	}
 
 	/**
@@ -69,7 +69,7 @@ class Hello_World extends Widget_Base {
 	 * @return array Widget categories.
 	 */
 	public function get_categories() {
-		return [ 'general' ];
+		return [ 'airvice-widget-category' ];
 	}
 
 	/**
@@ -84,7 +84,7 @@ class Hello_World extends Widget_Base {
 	 * @return array Widget scripts dependencies.
 	 */
 	public function get_script_depends() {
-		return [ 'elementor-hello-world' ];
+		return [ 'airvice-core' ];
 	}
 
 	/**
@@ -100,24 +100,66 @@ class Hello_World extends Widget_Base {
 		$this->start_controls_section(
 			'section_content',
 			[
-				'label' => __( 'Content', 'elementor-hello-world' ),
+				'label' => __( 'Content', 'airvice-core' ),
 			]
 		);
 
-		$this->add_control(
-			'title',
+		$repeater = new \Elementor\Repeater();
+			$repeater->add_control(
+			'image',
 			[
-				'label' => __( 'Title', 'elementor-hello-world' ),
-				'type' => Controls_Manager::TEXT,
+				'label' => esc_html__( 'Choose Image', 'textdomain' ),
+				'type' => \Elementor\Controls_Manager::MEDIA,
+				'default' => [
+					'url' => \Elementor\Utils::get_placeholder_image_src(),
+				],
+			]
+		);
+
+		$repeater->add_control(
+			'list_title',
+			[
+				'label' => esc_html__( 'Title', 'textdomain' ),
+				'type' => \Elementor\Controls_Manager::TEXT,
+				'default' => esc_html__( 'List Title' , 'textdomain' ),
+				'label_block' => true,
+			]
+		);
+
+		
+
+		$this->add_control(
+			'brand_list',
+			[
+				'label' => esc_html__( 'Repeater List', 'textdomain' ),
+				'type' => \Elementor\Controls_Manager::REPEATER,
+				'fields' => $repeater->get_controls(),
+				'default' => [
+					[
+						'list_title' => esc_html__( 'Title #1', 'textdomain' ),
+						'image' => esc_html__( get_template_directory_uri().'/assets/img/brand/brand-1.png', 'textdomain' ),
+					],
+					[
+						'list_title' => esc_html__( 'Title #2', 'textdomain' ),
+						'image' => esc_html__(  get_template_directory_uri().'/assets/img/brand/brand-2.png', 'textdomain' ),
+					],
+				],
+				'title_field' => '{{{ list_title }}}',
 			]
 		);
 
 		$this->end_controls_section();
 
+	
+
+
+
+
+		//style 
 		$this->start_controls_section(
 			'section_style',
 			[
-				'label' => __( 'Style', 'elementor-hello-world' ),
+				'label' => __( 'Style', 'airvice-core' ),
 				'tab' => Controls_Manager::TAB_STYLE,
 			]
 		);
@@ -125,14 +167,14 @@ class Hello_World extends Widget_Base {
 		$this->add_control(
 			'text_transform',
 			[
-				'label' => __( 'Text Transform', 'elementor-hello-world' ),
+				'label' => __( 'Text Transform', 'airvice-core' ),
 				'type' => Controls_Manager::SELECT,
 				'default' => '',
 				'options' => [
-					'' => __( 'None', 'elementor-hello-world' ),
-					'uppercase' => __( 'UPPERCASE', 'elementor-hello-world' ),
-					'lowercase' => __( 'lowercase', 'elementor-hello-world' ),
-					'capitalize' => __( 'Capitalize', 'elementor-hello-world' ),
+					'' => __( 'None', 'airvice-core' ),
+					'uppercase' => __( 'UPPERCASE', 'airvice-core' ),
+					'lowercase' => __( 'lowercase', 'airvice-core' ),
+					'capitalize' => __( 'Capitalize', 'airvice-core' ),
 				],
 				'selectors' => [
 					'{{WRAPPER}} .title' => 'text-transform: {{VALUE}};',
@@ -154,10 +196,27 @@ class Hello_World extends Widget_Base {
 	 */
 	protected function render() {
 		$settings = $this->get_settings_for_display();
+		?>
 
-		echo '<div class="title">';
-		echo $settings['title'];
-		echo '</div>';
+
+		   <!-- brand area end here -->
+        <div class="brand-area grey-bg pt-100 pb-100">
+            <div class="container">
+                <div class="brand-active swiper-container">
+                    <div class="swiper-wrapper">
+						<?php foreach($settings['brand_list'] as $item): ?>
+
+                        <div class="brand-wrapper swiper-slide wow fadeInUp" data-wow-delay=".3s" data-swiper-autoplay="5000">
+                            <a href="#"><img src="<?php  echo esc_url($item['image']['url']);?>" class="img-fluid" alt="img"></a>
+                        </div>
+                       <?php endforeach; ?>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- brand area start here -->
+
+		<?php
 	}
 
 	/**
@@ -177,3 +236,4 @@ class Hello_World extends Widget_Base {
 		<?php
 	}
 }
+$widgets_manager->register( new Airvice_Brand() );
