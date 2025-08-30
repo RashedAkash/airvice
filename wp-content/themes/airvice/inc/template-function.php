@@ -28,7 +28,7 @@ function airvice_pagination(){
 }
 
 // exdos_tags
-function solub_tags(){
+function airvice_tags(){
 	$post_tags = get_the_tags();
     if ($post_tags) {
         foreach ($post_tags as $tag) {
