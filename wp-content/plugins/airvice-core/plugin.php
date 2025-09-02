@@ -108,6 +108,7 @@ class Plugin {
 		require_once( __DIR__ . '/widgets/testimonial.php' );
 		require_once( __DIR__ . '/widgets/choose.php' );
 		require_once( __DIR__ . '/widgets/hero.php' );
+		require_once( __DIR__ . '/widgets/contact.php' );
 		require_once( __DIR__ . '/widgets/blog-post.php' );
 		require_once( __DIR__ . '/widgets/inline-editing.php' );
 
