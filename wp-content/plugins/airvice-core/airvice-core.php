@@ -14,6 +14,8 @@
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 require_once('include/airvice-kses-func.php');
+require_once('include/services-post-type.php');
+require_once('include/recent-blog.php');
 
 /**
  * Main Airvice Core Class

@@ -37,6 +37,21 @@ class Airvice_contact extends Widget_Base {
 			]
 		);
 
+			$this->add_control(
+			'contact_style',
+			[
+				'label' => esc_html__( 'Border Style', 'textdomain' ),
+				'type' => \Elementor\Controls_Manager::SELECT,
+				'default' => 'contact1',
+				'options' => [
+					
+					'contact1' => esc_html__( 'Contact1', 'textdomain' ),
+					'contact2' => esc_html__( 'Contact2', 'textdomain' ),
+				],
+				
+			]
+		);
+
 		
 		$this->add_control(
 			'title',
@@ -94,6 +109,8 @@ class Airvice_contact extends Widget_Base {
 	protected function render() {
     $settings = $this->get_settings_for_display();
     ?>
+	<?php if ( $settings['contact_style'] === 'contact1' ) :
+?>
 
     <div class="contact__inner--form service__contact--form">
         <div class="section-title-wrapper mb-40">
@@ -110,6 +127,18 @@ class Airvice_contact extends Widget_Base {
         echo do_shortcode('[contact-form-7 id="a8e9a8c" title="contact form"]');
         ?>
     </div>
+
+
+
+	<?php else: ?>
+	 <div class="acontact__form mr-70 wow fadeInUp" data-wow-delay=".3s">
+		<h3 class="acontact__form--title">Free Estimate</h3>
+		 <?php
+        // Contact Form 7 Shortcode render
+        echo do_shortcode('[contact-form-7 id="a8e9a8c" title="contact form"]');
+        ?>
+	</div>
+	<?php endif; ?>
 
     <?php
 }
